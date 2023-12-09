@@ -40,7 +40,35 @@ def alta_ingreso(tipo):
           print(E)
 
     elif tipo == 'Materias':
-        print(f'Alta ingreso de {tipo}')
+        try:
+            archivo = open('datos/materias.txt', 'a', encoding='utf-8')
+            archivo2 = open('datos/materias.txt', 'r', encoding='utf-8')
+
+            print(f'Ingreso de {tipo}\n')
+            iden = input('Ingrese el ID de la materia: ')
+
+            archivo2.seek(0)
+            for linea in archivo2:
+                lista = linea.split(',')
+                if lista[0] == iden:
+                    print('Error: El ID de la materia ya existe en el archivo.')
+                    archivo2.close()
+                    return
+
+            nombre_materia = input('Ingrese el nombre de la materia: ')
+            numero_creditos = int(input('Ingrese el número de créditos: '))
+            estado = 1
+
+            archivo.write(f'{iden},{nombre_materia},{numero_creditos},{estado}\n')
+            print(f'\nDatos ingresados:\n'
+                  f'ID: {iden}\n'
+                  f'Nombre materia: {nombre_materia}\n'
+                  f'Número de créditos: {numero_creditos}\n')
+
+            archivo.close()
+
+        except Exception as E:
+            print(f'Error al ingresar los datos: {E}\n')
 
     elif tipo == 'Docentes':
         print(f'Alta ingreso de {tipo}')
