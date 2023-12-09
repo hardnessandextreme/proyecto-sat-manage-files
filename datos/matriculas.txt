@@ -1,0 +1,3 @@
+Jonatito,Quinte Arevalo,Base de Datos,Eddye Segundo,Lino Matamoros,B,320
+Gustavo Alexander,Herrera,Programación con Bases de Datos,Enrique Loco,Villalta,C,120
+Jonatito,Quinte Arevalo,Gestión de Contenido,Enrique Loco,Villalta,A,120
