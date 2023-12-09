@@ -45,12 +45,12 @@ def alta_ingreso(tipo):
             archivo2 = open('datos/materias.txt', 'r', encoding='utf-8')
 
             print(f'Ingreso de {tipo}\n')
-            id_materia = input('Ingrese el ID de la materia: ')
+            id_materia = int(input('Ingrese el ID de la materia: '))
 
             archivo2.seek(0)
             for linea in archivo2:
                 lista = linea.split(',')
-                if lista[0] == id_materia:
+                if int(lista[0]) == id_materia:
                     print('Error: El ID de la materia ya existe en el archivo.')
                     archivo2.close()
                     return
@@ -76,12 +76,12 @@ def alta_ingreso(tipo):
             archivo2 = open('datos/docentes.txt', 'r', encoding='utf-8')
 
             print(f'Ingreso de {tipo}\n')
-            id_docente = input('Ingrese el ID del docente: ')
+            id_docente = int(input('Ingrese el ID del docente: '))
 
             archivo2.seek(0)
             for linea in archivo2:
                 lista = linea.split(',')
-                if lista[0] == id_docente:
+                if int(lista[0]) == id_docente:
                     print('Error: El ID del docente ya existe en el archivo.')
                     archivo2.close()
                     return
@@ -181,9 +181,9 @@ def consultar_general(tipo):
 
             for linea in archivo:
                 lista = linea.split(',')
-                estado = lista[3].rstrip()
+                estado = int(lista[3].rstrip())
 
-                if estado == '1':
+                if estado == 1:
                     activo = True
                     lista_activos.append(linea)
 
@@ -217,7 +217,7 @@ def consultar_especifica(tipo, identificacion):
             for linea in archivo:
                 lista = linea.split(',')
 
-                if identificacion == lista[0]:
+                if str(identificacion) == lista[0]:
                     info_est.append(lista[0])
                     info_est.append(lista[1])
                     info_est.append(lista[2])
@@ -239,7 +239,35 @@ def consultar_especifica(tipo, identificacion):
         except Exception as E:
             print(f'Error al consultar el registro: {E}\n')
     elif tipo == 'Materias':
-        print(f'Consulta Específica de {tipo}')
+        try:
+            print('\nBusqueda de datos')
+
+            archivo = open('datos/materias.txt', 'r', encoding='utf-8')
+            
+            info_est = []
+            lista = []
+            encontrado = False
+            for linea in archivo:
+                lista = linea.split(',')
+
+                if  str(identificacion) == lista[0]:
+                    info_est.append(lista[0])
+                    info_est.append(lista[1])
+                    info_est.append(lista[2])
+                    encontrado = True
+
+            archivo.close()
+
+            if encontrado:
+                print(f'\nID: {info_est[0]}')
+                print(f'Nombre materia: {info_est[1]}')
+                print(f'Creditos: {info_est[2]}')
+
+            else:
+                print('Registro no encontrado')
+
+        except Exception as E:
+            print(f'Error al consultar el registro: {E}\n')
     elif tipo == 'Docentes':
         print(f'Consulta Específica de {tipo}')
 
@@ -255,7 +283,7 @@ def editar_registro(tipo, identificacion):
             encontrado = False
             for i in range(len(lineas)):
                 lista = lineas[i].split(',')
-                if identificacion == lista[0]:
+                if str(identificacion) == lista[0]:
                     encontrado = True
                     print(f'Edición de Registro de {tipo}')
                     nuevo_nombre = input('Ingrese el nuevo nombre: ')
@@ -279,6 +307,7 @@ def editar_registro(tipo, identificacion):
 
     elif tipo == 'Materias':
         print(f'Edición de Registro de {tipo}')
+        
     elif tipo == 'Docentes':
         print(f'Edición de Registro de {tipo}')
 
@@ -295,7 +324,7 @@ def eliminar_registro(tipo, identificacion):
             encontrado = False
             for i in range(len(lineas)):
                 lista = lineas[i].split(',')
-                if identificacion == lista[0]:
+                if str(identificacion) == lista[0]:
                     encontrado = True
                     lista[5] = '0\n'
                     lineas[i] = ','.join(lista)

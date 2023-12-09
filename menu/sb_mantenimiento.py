@@ -21,13 +21,13 @@ def submenu_mantenimiento(tipo):
          elif opcion_submenu == 2:
             consultar_general(tipo)
          elif opcion_submenu == 3:
-            identificacion = input('Ingrese identificación: ')
+            identificacion = int(input('Ingrese identificación: '))
             consultar_especifica(tipo, identificacion)
          elif opcion_submenu == 4:
-            identificacion = input('Ingrese identificación: ')
+            identificacion = int(input('Ingrese identificación: '))
             editar_registro(tipo, identificacion)
          elif opcion_submenu == 5:
-            identificacion = input('Ingrese identificación: ')
+            identificacion = int(input('Ingrese identificación: '))
             eliminar_registro(tipo, identificacion)
          elif opcion_submenu == 6:
             ciclo = False
