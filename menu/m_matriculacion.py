@@ -1,25 +1,21 @@
-def registrar_matricula():
-    pass
-
-def consultar_alumno_matriculado():
-    pass
-
+from menu.sb_matriculacion import *
 
 def menu_matriculacion():
-    ciclo= True
+    ciclo = True
 
     while ciclo:
+        limpiar_pantalla()
         print("1. Registro de matricula\n"
               "2. Consulta de alumnos matriculados\n"
               "3. Salir")
         
         try:
-            opcion= int(input("Ingresa la opcion: "))
+            opcion = int(input("Ingresa la opcion: "))
 
             if opcion == 1:
-                print("Estoy en Registro de matricula")
+                registrar_matricula()
             elif opcion == 2:
-                print("Estoy en Consulta de alumnos matriculados")
+                consultar_alumnos_matriculados()
             elif opcion == 3:
                 ciclo = False
             else:
@@ -28,5 +24,5 @@ def menu_matriculacion():
         except Exception as e:
             pass
 
-if __name__=="__main__":
+if __name__ == "__main__":
     menu_matriculacion()
