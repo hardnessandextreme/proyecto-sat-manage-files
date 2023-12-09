@@ -1,4 +1,4 @@
-1,Base de Datos,40,1
+1,Base de Datos,90,1
 2,Fundamentos de Programación,90,1
 3,Programación con Bases de Datos,85,1
 4,Gestión de Contenido,90,1
