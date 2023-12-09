@@ -8,30 +8,30 @@ def alta_ingreso(tipo):
             archivo2 = open('datos/usuarios.txt', 'r', encoding='utf-8')
 
             print('Ingreso de datos\n')
-            iden = int(input('Ingrese identificacion: '))
+            id_estudiante = int(input('Ingrese identificacion: '))
 
             # Validar si el ID ya existe en el archivo
             archivo2.seek(0)
             for linea in archivo2:
                 lista = linea.split(',')
-                if int(lista[0]) == iden:
+                if int(lista[0]) == id_estudiante:
                     print('Error: El ID del estudiante ya existe en el archivo.')
                     archivo2.close()
                     return
 
-            nombre = input('Ingrese los nombres: ')
-            apellido = input('Ingrese los apellidos: ')
-            edad = int(input('Ingrese edad: '))
-            cedula = input('Ingrese la cedula: ')
-            estado = 1
+            nombre_estudiante = input('Ingrese los nombres: ')
+            apellido_estudiante = input('Ingrese los apellidos: ')
+            edad_estudiante = int(input('Ingrese edad: '))
+            cedula_estudiante = input('Ingrese la cedula: ')
+            estado_estudiante = 1
 
-            archivo.write(f'{iden},{nombre},{apellido},{edad},{cedula},{estado}\n')
+            archivo.write(f'{id_estudiante},{nombre_estudiante},{apellido_estudiante},{edad_estudiante},{cedula_estudiante},{estado_estudiante}\n')
             print(f'\nDatos ingresados:\n'
-                    f'ID: {iden}\n'
-                    f'Nombre: {nombre}\n'
-                    f'Apellido: {apellido}\n'
-                    f'Edad: {edad}\n'
-                    f'Cedula: {cedula}\n')
+                    f'ID: {id_estudiante}\n'
+                    f'Nombre: {nombre_estudiante}\n'
+                    f'Apellido: {apellido_estudiante}\n'
+                    f'Edad: {edad_estudiante}\n'
+                    f'Cedula: {cedula_estudiante}\n')
             
             
             archivo.close()
@@ -45,23 +45,23 @@ def alta_ingreso(tipo):
             archivo2 = open('datos/materias.txt', 'r', encoding='utf-8')
 
             print(f'Ingreso de {tipo}\n')
-            iden = input('Ingrese el ID de la materia: ')
+            id_materia = input('Ingrese el ID de la materia: ')
 
             archivo2.seek(0)
             for linea in archivo2:
                 lista = linea.split(',')
-                if lista[0] == iden:
+                if lista[0] == id_materia:
                     print('Error: El ID de la materia ya existe en el archivo.')
                     archivo2.close()
                     return
 
             nombre_materia = input('Ingrese el nombre de la materia: ')
             numero_creditos = int(input('Ingrese el número de créditos: '))
-            estado = 1
+            estado_materia = 1
 
-            archivo.write(f'{iden},{nombre_materia},{numero_creditos},{estado}\n')
+            archivo.write(f'{id_materia},{nombre_materia},{numero_creditos},{estado_materia}\n')
             print(f'\nDatos ingresados:\n'
-                  f'ID: {iden}\n'
+                  f'ID: {id_materia}\n'
                   f'Nombre materia: {nombre_materia}\n'
                   f'Número de créditos: {numero_creditos}\n')
 
@@ -71,7 +71,35 @@ def alta_ingreso(tipo):
             print(f'Error al ingresar los datos: {E}\n')
 
     elif tipo == 'Docentes':
-        print(f'Alta ingreso de {tipo}')
+        try:
+            archivo = open('datos/docentes.txt', 'a', encoding='utf-8')
+            archivo2 = open('datos/docentes.txt', 'r', encoding='utf-8')
+
+            print(f'Ingreso de {tipo}\n')
+            id_docente = input('Ingrese el ID del docente: ')
+
+            archivo2.seek(0)
+            for linea in archivo2:
+                lista = linea.split(',')
+                if lista[0] == id_docente:
+                    print('Error: El ID del docente ya existe en el archivo.')
+                    archivo2.close()
+                    return
+
+            nombre_docente = input('Ingrese los nombres del docente: ')
+            apellido_docente = input('Ingrese los apellidos del docente: ')
+            estado_docente = 1
+
+            archivo.write(f'{id_docente},{nombre_docente},{apellido_docente},{estado_docente}\n')
+            print(f'\nDatos ingresados:\n'
+                  f'ID: {id_docente}\n'
+                  f'Nombre docente: {nombre_docente}\n'
+                  f'Apellido docente: {apellido_docente}\n')
+
+            archivo.close()
+
+        except Exception as E:
+            print(f'Error al ingresar los datos: {E}\n')
 
 
 def consultar_general(tipo):
@@ -111,9 +139,68 @@ def consultar_general(tipo):
             print(f'Error al consultar los datos: {E}\n')
         
     elif tipo == 'Materias':
-        print(f'Consulta General de {tipo}')
+        try:
+            print(f'Consulta General de {tipo}\n')
+            archivo = open('datos/materias.txt', 'r', encoding='utf-8')
+
+            activo = False
+            lista = []
+            lista_activos = []
+
+            for linea in archivo:
+                lista = linea.split(',')
+                estado = lista[3].rstrip()
+
+                if estado == '1':
+                    activo = True
+                    lista_activos.append(linea)
+
+            if activo:
+                for linea in lista_activos:
+                    lista_activos = linea.split(',')
+                    print(f'ID Materia: {lista_activos[0]}')
+                    print(f'Nombre materia: {lista_activos[1]}')
+                    print(f'Creditos: {lista_activos[2]}')
+                    print()
+            else:
+                print('No hay registros activos')
+
+            archivo.close()
+
+        except Exception as E:
+            print(f'Error al consultar los datos: {E}\n')
+    
     elif tipo == 'Docentes':
-        print(f'Consulta General de {tipo}')
+        try:
+            print(f'Consulta General de {tipo}\n')
+            archivo = open('datos/docentes.txt', 'r', encoding='utf-8')
+
+            activo = False
+            lista = []
+            lista_activos = []
+
+            for linea in archivo:
+                lista = linea.split(',')
+                estado = lista[3].rstrip()
+
+                if estado == '1':
+                    activo = True
+                    lista_activos.append(linea)
+
+            if activo:
+                for linea in lista_activos:
+                    lista_activos = linea.split(',')
+                    print(f'ID docente: {lista_activos[0]}')
+                    print(f'Nombre docente: {lista_activos[1]}')
+                    print(f'Apellido docente: {lista_activos[2]}')
+                    print()
+            else:
+                print('No hay registros activos')
+
+            archivo.close()
+
+        except Exception as E:
+            print(f'Error al consultar los datos: {E}\n')
 
 
 def consultar_especifica(tipo, identificacion):
