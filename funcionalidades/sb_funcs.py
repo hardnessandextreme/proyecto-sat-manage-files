@@ -425,8 +425,57 @@ def eliminar_registro(tipo, identificacion):
 
     elif tipo == 'Materias':
         print(f'Eliminar Registro de {tipo}')
+        try:
+            archivo = open('datos/materias.txt', 'r', encoding='utf-8')
+            lineas = archivo.readlines()
+            archivo.close()
+
+            encontrado = False
+            for i in range(len(lineas)):
+                lista = lineas[i].split(',')
+                if str(identificacion) == lista[0]:
+                    encontrado = True
+                    lista[3] = '0\n'
+                    lineas[i] = ','.join(lista)
+                    break
+
+            if encontrado:
+                archivo = open('datos/materias.txt', 'w', encoding='utf-8')
+                archivo.writelines(lineas)
+                archivo.close()
+                print('Registro eliminado exitosamente')
+            else:
+                print('\nRegistro no encontrado')
+
+        except Exception as E:
+            print(f'Error al eliminar el registro: {E}')
+
     elif tipo == 'Docentes':
         print(f'Eliminar Registro de {tipo}')
+        try:
+            archivo = open('datos/docentes.txt', 'r', encoding='utf-8')
+            lineas = archivo.readlines()
+            archivo.close()
+
+            encontrado = False
+            for i in range(len(lineas)):
+                lista = lineas[i].split(',')
+                if str(identificacion) == lista[0]:
+                    encontrado = True
+                    lista[3] = '0\n'
+                    lineas[i] = ','.join(lista)
+                    break
+
+            if encontrado:
+                archivo = open('datos/docentes.txt', 'w', encoding='utf-8')
+                archivo.writelines(lineas)
+                archivo.close()
+                print('Registro eliminado exitosamente')
+            else:
+                print('\nRegistro no encontrado')
+
+        except Exception as E:
+            print(f'Error al eliminar el registro: {E}')
 
 
 if __name__ == '__main__':
