@@ -15,7 +15,7 @@ def alta_ingreso(tipo):
             for linea in archivo2:
                 lista = linea.split(',')
                 if int(lista[0]) == id_estudiante:
-                    print('Error: El ID del estudiante ya existe en el archivo.')
+                    print('\nError: El ID del estudiante ya existe en el archivo.')
                     archivo2.close()
                     return
 
@@ -131,12 +131,12 @@ def consultar_general(tipo):
                     print(f'Cedula: {lista_activos[4]}')
                     print()
             else:
-                print('No hay registros activos')
+                print('\nNo hay registros activos')
 
             archivo.close()
 
         except Exception as E:
-            print(f'Error al consultar los datos: {E}\n')
+            print(f'\nError al consultar los datos: {E}\n')
         
     elif tipo == 'Materias':
         try:
@@ -234,10 +234,11 @@ def consultar_especifica(tipo, identificacion):
                 print(f'Edad: {info_est[3]}')
                 print(f'Cedula: {info_est[4]}')
             else:
-                print('Registro no encontrado')
+                print('\nRegistro no encontrado')
 
         except Exception as E:
             print(f'Error al consultar el registro: {E}\n')
+    
     elif tipo == 'Materias':
         try:
             print('\nBusqueda de datos')
@@ -264,12 +265,41 @@ def consultar_especifica(tipo, identificacion):
                 print(f'Creditos: {info_est[2]}')
 
             else:
-                print('Registro no encontrado')
+                print('\nRegistro no encontrado')
 
         except Exception as E:
             print(f'Error al consultar el registro: {E}\n')
+    
     elif tipo == 'Docentes':
-        print(f'Consulta Específica de {tipo}')
+        try:
+            print('\nBusqueda de datos')
+
+            archivo = open('datos/docentes.txt', 'r', encoding='utf-8')
+            
+            info_est = []
+            lista = []
+            encontrado = False
+            for linea in archivo:
+                lista = linea.split(',')
+
+                if  str(identificacion) == lista[0]:
+                    info_est.append(lista[0])
+                    info_est.append(lista[1])
+                    info_est.append(lista[2])
+                    encontrado = True
+
+            archivo.close()
+
+            if encontrado:
+                print(f'\nID: {info_est[0]}')
+                print(f'Nombres: {info_est[1]}')
+                print(f'Apellidos: {info_est[2]}')
+
+            else:
+                print('\nRegistro no encontrado')
+
+        except Exception as E:
+            print(f'Error al consultar el registro: {E}\n')
 
 
 def editar_registro(tipo, identificacion):
@@ -285,7 +315,7 @@ def editar_registro(tipo, identificacion):
                 lista = lineas[i].split(',')
                 if str(identificacion) == lista[0]:
                     encontrado = True
-                    print(f'Edición de Registro de {tipo}')
+                    print(f'Edición de Registro de {tipo}\n')
                     nuevo_nombre = input('Ingrese el nuevo nombre: ')
                     nuevo_apellido = input('Ingrese el nuevo apellido: ')
                     nueva_edad = input('Ingrese la nueva edad: ')
@@ -298,18 +328,70 @@ def editar_registro(tipo, identificacion):
                 archivo = open('datos/usuarios.txt', 'w', encoding='utf-8')
                 archivo.writelines(lineas)
                 archivo.close()
-                print('Registro editado exitosamente')
+                print('\nRegistro editado exitosamente')
             else:
-                print('Registro no encontrado')
+                print('\nRegistro no encontrado')
 
         except Exception as E:
             print(f'Error al editar el registro: {E}')
 
     elif tipo == 'Materias':
-        print(f'Edición de Registro de {tipo}')
-        
+        try:
+            archivo = open('datos/materias.txt', 'r', encoding='utf-8')
+            lineas = archivo.readlines()
+            archivo.close()
+
+            encontrado = False
+            for i in range(len(lineas)):
+                lista = lineas[i].split(',')
+                if str(identificacion) == lista[0]:
+                    encontrado = True
+                    print(f'Edición de Registro de {tipo}\n')
+                    nuevo_nombre_materia = input('Ingrese el nuevo nombre: ')
+                    nuevo_credito = input('Ingrese el nuevo credito: ')
+                    estado_materia = 1
+                    lineas[i] = f'{identificacion},{nuevo_nombre_materia},{nuevo_credito},{estado_materia}\n'
+                    break
+
+            if encontrado:
+                archivo = open('datos/materias.txt', 'w', encoding='utf-8')
+                archivo.writelines(lineas)
+                archivo.close()
+                print('\nRegistro editado exitosamente')
+            else:
+                print('\nRegistro no encontrado')
+
+        except Exception as E:
+            print(f'Error al editar el registro: {E}')
+
     elif tipo == 'Docentes':
-        print(f'Edición de Registro de {tipo}')
+        try:
+            archivo = open('datos/docentes.txt', 'r', encoding='utf-8')
+            lineas = archivo.readlines()
+            archivo.close()
+
+            encontrado = False
+            for i in range(len(lineas)):
+                lista = lineas[i].split(',')
+                if str(identificacion) == lista[0]:
+                    encontrado = True
+                    print(f'Edición de Registro de {tipo}')
+                    nuevo_nombre_docente = input('Ingrese el nuevo nombre: ')
+                    nuevo_apellido_docente = input('Ingrese el nuevo apellido: ')
+                    estado_docente = 1
+                    lineas[i] = f'{identificacion},{nuevo_nombre_docente},{nuevo_apellido_docente},{estado_docente}\n'
+                    break
+
+            if encontrado:
+                archivo = open('datos/docentes.txt', 'w', encoding='utf-8')
+                archivo.writelines(lineas)
+                archivo.close()
+                print('\nRegistro editado exitosamente')
+            else:
+                print('\nRegistro no encontrado')
+
+        except Exception as E:
+            print(f'Error al editar el registro: {E}')
 
 
 def eliminar_registro(tipo, identificacion):
@@ -336,7 +418,7 @@ def eliminar_registro(tipo, identificacion):
                 archivo.close()
                 print('Registro eliminado exitosamente')
             else:
-                print('Registro no encontrado')
+                print('\nRegistro no encontrado')
 
         except Exception as E:
             print(f'Error al eliminar el registro: {E}')
