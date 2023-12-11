@@ -2,8 +2,8 @@ from funcionalidades.funcs import limpiar_pantalla
 
 def registrar_calificaciones():
     limpiar_pantalla()
+    print("Registro de calificaciones\n")
     try:
-        print("Registro de calificaciones\n")
         id_alumno = int(input("Ingrese el id del alumno: "))
         id_materia = int(input("Ingrese el id de la materia: "))
         nota_1 = int(input("Ingrese la nota 1: "))
@@ -82,16 +82,21 @@ def registrar_calificaciones():
         input('\nPresione una tecla para continuar...')
         
     except Exception as e:
-        print(f"Error al registrar la calificacion {e}")
+        print(f"\nError al registrar la calificacion {e}")
+        input('\nPresione una tecla para continuar...')
 
 def consultar_calificaciones():
     limpiar_pantalla()
+    print("Consultar calificaciones\n")
     try:
         notas_contenido = open("datos/notas.txt", "r", encoding='utf-8')
         notas_data = notas_contenido.readlines()
         notas_contenido.close()
         
-        print("Consulta de calificaciones\n")
+        if len(notas_data) == 0:
+            print("No hay registro de calificaciones.")
+            input('\nPresione una tecla para continuar...')
+            return
         
         lista = []
         
