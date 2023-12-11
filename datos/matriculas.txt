@@ -1,3 +1,2 @@
 Jonathan Isaac,Quinte Arevalo,Integración de Aplicaciones API,Andres Manuel,Loor Guaycha,B,200
 Jonathan Isaac,Quinte Arevalo,Programación Usando Framework,Eddye Jose,Lino Matamoros,C,230
-Nombre 4,Apellido 4,Materia 6,Docente 4,Apellidoo 4,A,200
