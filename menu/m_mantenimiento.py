@@ -6,11 +6,11 @@ def menu_de_mantenimiento():
    ciclo= True
    while ciclo:
       limpiar_pantalla()
-      print("Menu Mantenimiento")
+      print("Menu Mantenimiento\n")
       print("1. Alumnos\n"
             "2. Materias\n"
             "3. Docentes\n"
-            "4. Salir")
+            "4. Salir\n")
       
       try:
          opcion= int(input("Ingresa la opcion: "))
@@ -27,10 +27,10 @@ def menu_de_mantenimiento():
          elif opcion == 4:
             ciclo = False
          else:
-            print('Ingrese una opción válida.')
+            print('\nIngrese una opción válida.')
 
       except Exception as e:
-         pass
+         print(f"\nError en el menu de mantenimiento {e}")
 
 if __name__=="__main__":
     menu_de_mantenimiento()
