@@ -2,6 +2,7 @@ from menu.m_mantenimiento import menu_de_mantenimiento
 from menu.m_matriculacion import menu_matriculacion
 from menu.m_registronota import menu_registro_nota
 from funcionalidades.funcs import *
+import time
 
 def menu_principal():
     ciclo= True
@@ -32,4 +33,11 @@ def menu_principal():
             ciclo = False
 
 if __name__=="__main__":
-    menu_principal()
+    try:
+        menu_principal()
+    except KeyboardInterrupt:
+        print()
+        print()
+        print('Saliendo del programa...')
+        time.sleep(1)
+        exit()
