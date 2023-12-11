@@ -5,9 +5,10 @@ def menu_matriculacion():
 
     while ciclo:
         limpiar_pantalla()
+        print("Menu de Matriculacion\n")
         print("1. Registro de matricula\n"
               "2. Consulta de alumnos matriculados\n"
-              "3. Salir")
+              "3. Salir\n")
         
         try:
             opcion = int(input("Ingresa la opcion: "))
@@ -19,10 +20,10 @@ def menu_matriculacion():
             elif opcion == 3:
                 ciclo = False
             else:
-                print('Ingrese una opción válida.')
+                print('\nIngrese una opción válida.')
                 
         except Exception as e:
-            pass
+            print(f"\nError en el menu de matriculacion {e}")
 
 if __name__ == "__main__":
     menu_matriculacion()
