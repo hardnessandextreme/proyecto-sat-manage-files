@@ -15,7 +15,7 @@ def menu_principal():
               "4. Salir\n")
         
         try:
-            crear_archivos()
+            verificar_carpeta_datos()
             opcion=int(input("Ingresa la opcion: "))
 
             if opcion == 1:
