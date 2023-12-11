@@ -1,4 +1,3 @@
-1,Enrique Loco,Villalta,0
-2,Enrique,Villalta,0
-3,Eddye Segundo,Lino Matamoros,0
-4,Washintong Josue,Perez Marino,1
+1,Andres Manuel,Loor Guaycha,1
+2,Eddye Jose,Lino Matamoros,1
+3,Enrique Daniel,Villalta Lara,1

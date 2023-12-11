@@ -1,2 +1,2 @@
-Jonatito,Quinte Arevalo,Fundamentos de Programación,15,13,32,34,94,Aprobado
-David Fernando,Alonso Giler ,Base de Datos,14,15,35,25,89,Aprobado
+Jonathan Isaac,Quinte Arevalo,Integración de Aplicaciones API,15,15,35,35,100,Aprobado
+Jonathan Isaac,Quinte Arevalo,Programación Usando Framework,13,12,32,35,92,Aprobado

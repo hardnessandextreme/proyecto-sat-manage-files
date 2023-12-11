@@ -1,3 +1,3 @@
-Jonatito,Quinte Arevalo,Base de Datos,Eddye Segundo,Lino Matamoros,B,320
-Gustavo Alexander,Herrera,Programación con Bases de Datos,Enrique Loco,Villalta,C,120
-Jonatito,Quinte Arevalo,Gestión de Contenido,Enrique Loco,Villalta,A,120
+Jonathan Isaac,Quinte Arevalo,Integración de Aplicaciones API,Andres Manuel,Loor Guaycha,B,200
+Jonathan Isaac,Quinte Arevalo,Programación Usando Framework,Eddye Jose,Lino Matamoros,C,230
+Nombre 4,Apellido 4,Materia 6,Docente 4,Apellidoo 4,A,200
