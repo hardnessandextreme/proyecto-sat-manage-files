@@ -1,8 +1,9 @@
 from funcionalidades.funcs import limpiar_pantalla
 
 def registrar_matricula():
+    limpiar_pantalla()
+    print("Registro de matricula\n")
     try:
-        limpiar_pantalla()
         alumno_id = input("Ingrese la identificación del alumno: ")
         materia_id = input("Ingrese la identificación de la materia: ")
         docente_id = input("Ingrese la identificación del docente: ")
@@ -85,23 +86,25 @@ def registrar_matricula():
         input('\nPresione una tecla para continuar...')
         
 def consultar_alumnos_matriculados():
+    limpiar_pantalla()
+    print("Consultar alumnos matriculados\n")
     try:
-        limpiar_pantalla()
         matriculas_file = open("datos/matriculas.txt", "r", encoding='utf-8')
         matriculas_data = matriculas_file.readlines()
         matriculas_file.close()
         
-        print("Alumnos matriculados\n")
-        
-        lista = []
-        
-        for registro in matriculas_data:
-            lista = registro.split(',')
-            print(f'Estudiante: {lista[0]} {lista[1]}')
-            print(f'Materia: {lista[2]}')
-            print(f'Docente: {lista[3]} {lista[4]}')
-            print(f'Horario: {lista[5]}')
-            print(f'Costo: {lista[6]}')
+        if len(matriculas_data) == 0:
+            print("No se encontraron matrículas registradas.")
+        else:
+            print("Alumnos matriculados\n")
+            
+            for registro in matriculas_data:
+                lista = registro.split(',')
+                print(f'Estudiante: {lista[0]} {lista[1]}')
+                print(f'Materia: {lista[2]}')
+                print(f'Docente: {lista[3]} {lista[4]}')
+                print(f'Horario: {lista[5]}')
+                print(f'Costo: {lista[6]}')
         
         input('\nPresione una tecla para continuar...')
     except Exception as e:
