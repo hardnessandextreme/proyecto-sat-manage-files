@@ -5,13 +5,13 @@ def submenu_mantenimiento(tipo):
    ciclo = True
    while ciclo:
       limpiar_pantalla()
-      print(f'Submenu Mantenimiento {tipo}')
+      print(f'Submenu Mantenimiento {tipo}\n')
       print('1. Alta\n'
             '2. Consulta General\n'
             '3. Consulta Específica\n'
             '4. Edicion Registro\n'
             '5. Eliminar Registro\n'
-            '6. Salir')
+            '6. Salir\n')
       
       try:
          opcion_submenu = int(input('Ingrese una opción: '))
@@ -36,4 +36,4 @@ def submenu_mantenimiento(tipo):
          limpiar_pantalla()
 
       except Exception as e:
-         pass
+         print(f'\nError en el submenu de mantenimiento {e}')
