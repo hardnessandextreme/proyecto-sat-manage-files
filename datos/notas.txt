@@ -1,2 +1,1 @@
-Jonathan Isaac,Quinte Arevalo,Integración de Aplicaciones API,15,15,35,35,100,Aprobado
-Jonathan Isaac,Quinte Arevalo,Programación Usando Framework,13,12,32,35,92,Aprobado
+
