@@ -1,5 +1,1 @@
-1,Base de Datos,90,1
-2,Integración de Aplicaciones API,85,1
-3,Fundamentos de Programación,90,1
-4,Programación con Bases de Datos,85,1
-5,Programación Usando Framework,90,1
+
